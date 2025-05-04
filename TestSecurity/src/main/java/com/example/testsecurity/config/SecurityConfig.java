@@ -34,8 +34,8 @@ public class SecurityConfig {
                         .permitAll()
                 );
 
-        http
-                .csrf((auth) -> auth.disable());
+//        http
+//                .csrf((auth) -> auth.disable());
 
         // 중복 로그인 컨르롤
         http
@@ -48,6 +48,12 @@ public class SecurityConfig {
         http
                 .sessionManagement((auth) -> auth
                         .sessionFixation().changeSessionId()
+                );
+
+        // GET 방식 로그아웃
+        http
+                .logout((auth) -> auth.logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
                 );
 
         return http.build();

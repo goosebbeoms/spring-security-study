@@ -15,6 +15,7 @@ Login Page
     <input type="text" id="username" name="username" placeholder="id" />
     <label for="password"> / password: </label>
     <input type="password" id="password" name="password" placeholder="password" />
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}">
     <input type="submit" value="login" />
 </form>
 <a href="/join">Move to Join Page</a>
