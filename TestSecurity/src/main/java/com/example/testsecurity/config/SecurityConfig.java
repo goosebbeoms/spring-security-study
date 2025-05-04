@@ -37,6 +37,19 @@ public class SecurityConfig {
         http
                 .csrf((auth) -> auth.disable());
 
+        // 중복 로그인 컨르롤
+        http
+                .sessionManagement((auth) -> auth
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(true)
+                );
+
+        // 세션 고정 공격 방지
+        http
+                .sessionManagement((auth) -> auth
+                        .sessionFixation().changeSessionId()
+                );
+
         return http.build();
     }
 }
